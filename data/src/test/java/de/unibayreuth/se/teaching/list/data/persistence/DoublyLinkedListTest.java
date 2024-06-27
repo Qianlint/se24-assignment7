@@ -57,6 +57,28 @@ class DoublyLinkedListTest {
     }
 
     @Test
+    void testInsertInEmptylist(){
+        Assertions.assertTrue(list.isEmpty());
+        //given: empty list
+        // when: inserting a new element
+        list.insert(new DoublyLinkedList.Element(1.0));
+        // then: the new element is the end of the list
+        Assertions.assertArrayEquals(new double[]{1.0}, list.asArray());
+    }
+
+    @Test
+    void testInsertDouble(){
+        // given: the list as four sorted elements
+        Assertions.assertTrue(list.isEmpty());
+        list.append(new double[]{0.2, 0.4, 0.5, 0.8});
+        // when: inserting a new value
+        list.insert(1.0);
+        // then: the new element is the end of the list
+        Assertions.assertArrayEquals(new double[]{0.2, 0.4, 0.5, 0.8, 1.0}, list.asArray());
+
+    }
+
+    @Test
     void testInsertNeitherMinimumNorMaximum() {
         // given: the list as four sorted elements
         Assertions.assertTrue(list.isEmpty());
